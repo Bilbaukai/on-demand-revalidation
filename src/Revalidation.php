@@ -77,7 +77,7 @@ class Revalidation {
 			'postId' => $post->ID,
 		] );
 
-		$response = wp_remote_request( "$frontend_url/api/revalidate", [
+		$response = wp_remote_request( "$frontend_url", [
 			'method'  => 'PUT',
 			'body'    => $data,
 			'headers' => [
@@ -114,7 +114,8 @@ class Revalidation {
 			<script type="text/javascript" >
 				jQuery('#on-demand-revalidation-post-update-test').on('click', function () {
 					jQuery.post(ajaxurl, { action: 'revalidation-post-update-test' }, function(response) {
-						alert(response?.message || response?.errors?.revalidate_error[0] || JSON.stringify(response.errors));
+						alert(response?.message || response?.errors?.
+						      _error[0] || JSON.stringify(response.errors));
 					});
 				});
 			</script>
